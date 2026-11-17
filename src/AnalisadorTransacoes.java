@@ -6,6 +6,10 @@ public class AnalisadorTransacoes {
 
         int quantidadeDuplicidades = 0;
 
+        System.out.println("=====IDENTIFICADOR-DE-COBRANÇAS=====");
+        System.out.println("Total de transações: " + transacoes.size());
+        System.out.println();
+
         for (int i = 0; i < transacoes.size(); i++) {
             Transacao primeira = transacoes.get(i);
 
@@ -16,29 +20,19 @@ public class AnalisadorTransacoes {
                 boolean mesmoSaldo = primeira.getValor().compareTo(segunda.getValor()) == 0;
                 boolean mesmaData = primeira.getData().equals(segunda.getData());
 
-
                 if (mesmaData && mesmoEstacionamento && mesmoSaldo) {
                     quantidadeDuplicidades++;
-                    System.out.println("=====CAÇA-COBRANÇAS=====\n");
-                    System.out.println("Total de transações: " + transacoes.size());
-                    System.out.println();
                     System.out.println("POSSÍVEL COBRANÇA DUPLICADA! \n");
                     System.out.println("Estabeleciemento: " + transacoes.get(i).getEstabelecimento());
                     System.out.println("Data: " + transacoes.get(i).getData());
-                    System.out.println("Saldo: R$ " + transacoes.get(i).getValor());
-                    System.out.println();
-                    System.out.println("Possíveis duplicadas: " + quantidadeDuplicidades);
+                    System.out.println("Valor: R$ " + transacoes.get(i).getValor());
+                    System.out.println("\n=================================");
                 }
             }
         }
-        if(quantidadeDuplicidades == 0) {
+        System.out.println("Possíveis duplicadas: " + quantidadeDuplicidades);
 
-            System.out.println("=====CAÇA-COBRANÇAS=====\n");
-            System.out.println("Total de transações: " + transacoes.size());
-            System.out.println();
-            System.out.println("===== RESULTADO DA ANÁLISE =====");
-            System.out.println("Possíveis duplicadas: " + quantidadeDuplicidades);
-            System.out.println();
+        if(quantidadeDuplicidades == 0) {
             System.out.println("Nenhuma cobrança suspeita encontrada!");
         }
     }
